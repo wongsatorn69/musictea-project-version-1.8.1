@@ -89,7 +89,7 @@ $row_total = mysqli_fetch_assoc($result_total);
         <?php } ?>
 
         <p><b style="color: #4b8c4e;">*น้ำเงิน = ว่าง , เหลือง = ติดจอง , เทา = ไม่ว่าง</b></p>
-        <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันนี้" .  $result_total['total_people'] ."</b></p>" ?>
+        <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันนี้" . " " . $row_total['total_people'] . " คน" ."</b></p>" ?>
 
         <?php if (isset($_SESSION['user_id'])) { ?>
           <a href="checklogin.php?logout" class="btn btn-danger" target="_blank" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">Logout</a>
