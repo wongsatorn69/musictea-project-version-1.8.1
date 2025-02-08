@@ -10,18 +10,20 @@ if (isset($_POST['table_id']) && isset($_POST['booking_name']) && isset($_POST['
 //ประกาศตัวแปรรับค่าจากฟอร์ม
 
 $booking_name = $_POST['booking_name'];
+$booking_people = $_POST['booking_people'];
 $booking_date = $_POST['booking_date'];
 $booking_time = $_POST['booking_time'];
 $booking_time_out = $_POST['booking_time'];
 $booking_phone = $_POST['booking_phone'];
 $booking_staff = $_POST['booking_staff'];
 $booking_status = 0 ;
+$booking_bill = 0 ;
 $table_id = $_POST['table_id'];
 $dateCreate = date('Y-m-d H:i:s'); //วันที่บันทึก
 
 //insert booking
 mysqli_query($condb, "BEGIN");
-$sqlInsertBooking	= "INSERT INTO  tbl_booking values(null, '$table_id', '$booking_name', '$booking_date','$booking_time_out', '$booking_time', '$booking_phone', '$booking_staff', '$dateCreate' , '$booking_status')";
+$sqlInsertBooking	= "INSERT INTO  tbl_booking values(null, '$table_id', '$booking_name', '$booking_people' , '$booking_date','$booking_time_out', '$booking_time', '$booking_phone', '$booking_staff', '$dateCreate' , '$booking_status' , '$booking_bill')";
 $rsInsertBooking	= mysqli_query($condb, $sqlInsertBooking);
  
 //การใช้ Transection ประกอบด้วย  BEGIN COMMIT ROLLBACK 

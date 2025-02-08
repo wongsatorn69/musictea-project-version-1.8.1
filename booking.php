@@ -58,13 +58,19 @@ $row = mysqli_fetch_array($result);
               </div>
               <div class="form-group row">
                 <label class="col-sm-3" style="color: #5d4b31;">วันที่</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                   <input type="date" name="booking_date" class="form-control" required value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" style="border-radius: 10px; background-color: #f9f8f3;">
                 </div>
               </div>
               <div class="form-group row">
+                <label class="col-sm-3" style="color: #5d4b31;">จำนวนคนในโต๊ะ</label>
+                <div class="col-sm-9">
+                  <input type="number" name="booking_people" class="form-control" required placeholder="จำนวคน" min="1" max="8" style="border-radius: 10px; background-color: #f9f8f3;">
+                </div>
+              </div>
+              <div class="form-group row">
                 <label class="col-sm-3" style="color: #5d4b31;">เวลา</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                   <input type="time" name="booking_time" class="form-control" required placeholder="เวลา" style="border-radius: 10px; background-color: #f9f8f3;">
                 </div>
               </div>
