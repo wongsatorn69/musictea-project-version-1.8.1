@@ -4,6 +4,10 @@ require_once 'connect_db.php';
 //query
 $query_table = "SELECT * FROM tbl_table ORDER BY id ASC";
 $result_table = mysqli_query($condb, $query_table);
+
+$query_total = "SELECT COUNT(booking_people) as total_people FROM tbl_booking WHERE (booking_status = 1 OR booking_status = 2) and booking_date = CURDATE()";
+$result_total = mysqli_query($condb, $query_total);
+$row_total = mysqli_fetch_assoc($result_total);
 ?>
 <!doctype html>
 <html lang="en">
@@ -85,6 +89,7 @@ $result_table = mysqli_query($condb, $query_table);
         <?php } ?>
 
         <p><b style="color: #4b8c4e;">*น้ำเงิน = ว่าง , เหลือง = ติดจอง , เทา = ไม่ว่าง</b></p>
+        <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันนี้" .  $result_total['total_people'] ."</b></p>" ?>
 
         <?php if (isset($_SESSION['user_id'])) { ?>
           <a href="checklogin.php?logout" class="btn btn-danger" target="_blank" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">Logout</a>
