@@ -54,7 +54,7 @@
             <img src="sucsym.webp" alt="Description of Image" class="center">
             <br><br>
             <button class="btn btn-danger btn-lg">
-              <a href="index.php" target="_blank">กลับสู่หน้าหลัก</a>
+              <a href="index.php">กลับสู่หน้าหลัก</a>
             </button>
             <hr>
           </div>

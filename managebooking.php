@@ -57,18 +57,18 @@
     ?>
 
     <?php
-    if (isset($_GET['finish_table']) && isset($_POST['booking_bill'])) {
+    if (isset($_POST['finish_table']) && isset($_POST['booking_bill'])) {
 
         $booking_bill = $_POST['booking_bill'];
 
-        // $query = "SELECT * FROM tbl_booking WHERE booking_id=$_POST[finish_table]";
-        // $result = mysqli_query($condb, $query);
-        // $row = mysqli_fetch_array($result);
+        $query = "SELECT * FROM tbl_booking WHERE booking_id=$_POST[finish_table]";
+        $result = mysqli_query($condb, $query);
+        $row = mysqli_fetch_array($result);
 
-        $sql_fin = "UPDATE tbl_booking SET booking_status = 2 , booking_bill = $booking_bill WHERE booking_id = '$_GET[finish_table]'";
+        $sql_fin = "UPDATE tbl_booking SET booking_status = 2 , booking_bill = $booking_bill WHERE booking_id = '$_POST[finish_table]'";
         $result_fin = mysqli_query($condb, $sql_fin);
 
-        $sqlUpdate = "UPDATE tbl_table SET table_status = 0 WHERE id = '$_GET[finish_table]'";
+        $sqlUpdate = "UPDATE tbl_table SET table_status = 0 WHERE id = '$row[table_id]'";
         $rsUpdate = mysqli_query($condb, $sqlUpdate);
 
         if ($result_fin = mysqli_query($condb, $sql_fin) && $rsUpdate = mysqli_query($condb, $sqlUpdate)) {

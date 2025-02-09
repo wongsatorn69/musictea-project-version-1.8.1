@@ -25,7 +25,7 @@ $row = mysqli_fetch_array($result);
     <title>แสดงข้อมูลโต๊ะเพื่อทำการจอง</title>
     <style type="text/css">
         .devbanban {
-            background-color: #ffffff;
+            background-color: #ffffff; 
         }
     </style>
 </head>
@@ -61,50 +61,49 @@ $row = mysqli_fetch_array($result);
                             </center>
                         </div>
                         <hr>
-
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">เลขโต๊ะ</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="table_name" class="form-control" disabled value="<?php echo $row['table_type'] . '' . $row['table_name']; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">ผู้จอง</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="booking_name" class="form-control" disabled placeholder="ชื่อผู้จอง" minlength="5" value="<?php echo $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">วันที่</label>
-                            <div class="col-sm-9">
-                                <input type="date" name="booking_date" class="form-control" disabled value="<?php echo $row['booking_date']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">จำนวนคนในโต๊ะ</label>
-                            <div class="col-sm-9">
-                                <input type="number" name="booking_people" class="form-control" disabled placeholder="จำนวคน" min="1" max="8" value="<?php echo $row['booking_people']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">เวลา</label>
-                            <div class="col-sm-9">
-                                <input type="time" name="booking_time" class="form-control" disabled placeholder="เวลา" value="<?php echo $row['booking_time']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">เบอร์โทร</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="booking_phone" class="form-control" disabled placeholder="เบอร์โทร" minlength="10" maxlength="10" value="<?php echo $row['booking_phone']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3" style="color: #5d4b31;">ผู้บันทึก</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="booking_staff" class="form-control" readonly value="<?php echo $row['booking_staff'] . ' ' . $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
-                            </div>
-                        </div>
                         <form action="managebooking.php" method="post">
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">เลขโต๊ะ</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="table_name" class="form-control" disabled value="<?php echo $row['table_type'] . '' . $row['table_name']; ?>">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">ผู้จอง</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="booking_name" class="form-control" disabled placeholder="ชื่อผู้จอง" minlength="5" value="<?php echo $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">วันที่</label>
+                                <div class="col-sm-9">
+                                    <input type="date" name="booking_date" class="form-control" disabled value="<?php echo $row['booking_date']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">จำนวนคนในโต๊ะ</label>
+                                <div class="col-sm-9">
+                                    <input type="number" name="booking_people" class="form-control" disabled placeholder="จำนวคน" min="1" max="8" value="<?php echo $row['booking_people']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">เวลา</label>
+                                <div class="col-sm-9">
+                                    <input type="time" name="booking_time" class="form-control" disabled placeholder="เวลา" value="<?php echo $row['booking_time']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">เบอร์โทร</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="booking_phone" class="form-control" disabled placeholder="เบอร์โทร" minlength="10" maxlength="10" value="<?php echo $row['booking_phone']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">ผู้บันทึก</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="booking_staff" class="form-control" readonly value="<?php echo $row['booking_staff'] . ' ' . $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
                             <?php if ($row['booking_status'] == 1) { ?>
                                 <div class="form-group row">
                                     <label class="col-sm-3" style="color: #5d4b31;">บิลของโต๊ะ</label>
@@ -116,17 +115,6 @@ $row = mysqli_fetch_array($result);
                             <div class="form-group row">
                                 <label class="col-sm-3"></label>
                                 <div class="col-sm-6">
-                                    <?php if ($row['table_status'] == 2) { ?>
-                                        <input type="hidden" name="finish_table" value="<?php echo $row['booking_id']; ?>">
-                                        <button type="submit" class="btn btn-warning" style="border-radius: 20px; padding: 10px 20px; background-color: #d1b22f;">
-                                            <a href="managebooking.php" style="color: white; text-decoration: none;">เช็คบิล</a>
-                                        </button>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3"></label>
-                                <div class="col-sm-6">
                                     <?php if ($row['table_status'] == 1) { ?>
                                         <button type="submit" class="btn btn-success" style="border-radius: 20px; padding: 10px 20px; background-color: #6a9c61;">
                                             <a href="managebooking.php?confirm_table=<?php echo $row['booking_id']; ?>" style="color: white; text-decoration: ;">รับโต๊ะ</a>
@@ -134,6 +122,9 @@ $row = mysqli_fetch_array($result);
                                         <button type="submit" class="btn btn-danger" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">
                                             <a href="managebooking.php?cancel_table=<?php echo $row['booking_id']; ?>" style="color: white; text-decoration: ;">หลุดจอง</a>
                                         </button>
+                                    <?php } else if ($row['booking_status'] == 1) { ?>
+                                        <input type="hidden" name="finish_table" value="<?php echo $row['booking_id']; ?>">
+                                        <button type="submit" class="btn btn-warning" style="border-radius: 20px; padding: 10px 20px; background-color: #d1b22f;">เช็คบิล</button>
                                     <?php } ?>
                                 </div>
                             </div>

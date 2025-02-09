@@ -41,7 +41,7 @@ require_once 'connect_db.php';
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-success btn-lg" name="submit" value="Login" style="border-radius: 20px; padding: 10px 20px; background-color: #6a9c61; border-color: #4d7e48; color: white;">Login</button>
                                 <button type="button" class="btn btn-danger btn-lg" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51; border-color: #d65a44;">
-                                    <a href="index.php" target="_blank" style="color: white; text-decoration: none;">Back</a>
+                                    <a href="index.php" style="color: white; text-decoration: none;">Back</a>
                                 </button>
                             </div>
                         </form>

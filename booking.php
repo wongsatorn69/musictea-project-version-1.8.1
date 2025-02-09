@@ -96,7 +96,7 @@ $row = mysqli_fetch_array($result);
                   <input type="hidden" name="table_id" value="<?php echo $_GET['id']; ?>">
                   <button type="submit" class="btn btn-success btn-lg" style="border-radius: 20px; padding: 10px 20px; background-color: #6a9c61;">บันทึกการจอง</button>
                   <button class="btn btn-danger btn-lg" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">
-                    <a href="index.php" target="_blank" style="color: white; text-decoration: none;">ยกเลิก</a>
+                    <a href="index.php" style="color: white; text-decoration: none;">ยกเลิก</a>
                   </button>
                   </div>
                   </div>

@@ -57,7 +57,7 @@
               <center><font color="#a82525"><b> กรุณามาก่อนเวลา 15 นาที เผื่อมีการเปลี่ยนแปลงใดๆ ขอบคุณครับ </b></font></center>
             </div>
             <button class="btn btn-danger btn-lg">
-              <a href="index.php" target="_blank">กลับสู่หน้าหลัก</a>
+              <a href="index.php">กลับสู่หน้าหลัก</a>
             </button>
             <hr>
           </div>

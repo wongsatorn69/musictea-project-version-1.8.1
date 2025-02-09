@@ -5,7 +5,7 @@ require_once 'connect_db.php';
 $query_table = "SELECT * FROM tbl_table ORDER BY id ASC";
 $result_table = mysqli_query($condb, $query_table);
 
-$query_total = "SELECT COUNT(booking_people) as total_people FROM tbl_booking WHERE (booking_status = 1 OR booking_status = 2) and booking_date = CURDATE()";
+$query_total = "SELECT sum(booking_people) as total_people FROM tbl_booking WHERE (booking_status = 1 OR booking_status = 2) and booking_date = CURDATE()";
 $result_total = mysqli_query($condb, $query_total);
 $row_total = mysqli_fetch_assoc($result_total);
 ?>
@@ -53,17 +53,17 @@ $row_total = mysqli_fetch_assoc($result_total);
                   if ($row_table['table_status'] == 0) { //ว่าง
                     if ($row_table['table_type'] == 'A') {
                       echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-primary" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-primary">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                     } else {
                       echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-success" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-success">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                     }
                   } elseif ($row_table['table_status'] == 1) { //ถูกจอง แต่ยังไม่รับโต๊ะ
                     echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                    echo '<a href="checkbooking.php?id=' . $row_table["id"] . '&act=checkbooking" class="btn btn-warning" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                    echo '<a href="checkbooking.php?id=' . $row_table["id"] . '&act=checkbooking" class="btn btn-warning">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                   } else { //ถูกจอง รับโต๊ะแล้ว
                     echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                    echo '<a href="checkbooking.php?id=' . $row_table["id"] . '&act=checkbooking" class="btn btn-secondary" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                    echo '<a href="checkbooking.php?id=' . $row_table["id"] . '&act=checkbooking" class="btn btn-secondary">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                   }
                 } ?>
             </div>
@@ -72,17 +72,16 @@ $row_total = mysqli_fetch_assoc($result_total);
                   if ($row_table['table_status'] == 0) { //ว่าง
                     if ($row_table['table_type'] == 'A') {
                       echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-primary" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-primary">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                     } else {
                       echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-success" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                      echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-success">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                     }
                   } elseif ($row_table['table_status'] == 1) { //ถูกจอง แต่ยังไม่รับโต๊ะ
-                    echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                    echo '<a href="#" class="btn btn-warning disabled" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                    echo '<div class="col-2 col-md-2 col-sm-2" style=">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                   } else { //ถูกจอง รับโต๊ะแล้ว
                     echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
-                    echo '<a href="#" class="btn btn-secondary disabled" target="_blank">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                    echo '<a href="#" class="btn btn-secondary disabled">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                   }
                 } ?>
           </div>
@@ -92,9 +91,9 @@ $row_total = mysqli_fetch_assoc($result_total);
         <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันนี้" . " " . $row_total['total_people'] . " คน" ."</b></p>" ?>
 
         <?php if (isset($_SESSION['user_id'])) { ?>
-          <a href="checklogin.php?logout" class="btn btn-danger" target="_blank" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">Logout</a>
+          <a href="checklogin.php?logout" class="btn btn-danger" style="border-radius: 20px; padding: 10px 20px; background-color: #d76c51;">Logout</a>
         <?php } else { ?>
-          <a href="login.php" class="btn btn-warning" target="_blank" style="border-radius: 20px; padding: 10px 20px; background-color: #f9aa33;">Login</a>
+          <a href="login.php" class="btn btn-warning" style="border-radius: 20px; padding: 10px 20px; background-color: #f9aa33;">Login</a>
         <?php } ?>
         </div>
       </div>
