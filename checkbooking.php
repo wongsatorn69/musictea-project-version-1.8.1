@@ -25,7 +25,21 @@ $row = mysqli_fetch_array($result);
     <title>แสดงข้อมูลโต๊ะเพื่อทำการจอง</title>
     <style type="text/css">
         .devbanban {
-            background-color: #ffffff; 
+            background-color: #ffffff;
+        }
+
+        /* สไตล์สำหรับการแสดงเวลาบนมุมขวาบน */
+        #clock-container {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #4b8c4e;
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -49,15 +63,31 @@ $row = mysqli_fetch_array($result);
             <div class="col-12 col-sm-10 col-md-8 col-lg-7" style="margin-top: 50px;">
                 <div class="card shadow-lg" style="border-radius: 15px; background-color: #f4f1e1;">
                     <div class="card-body">
+                        <div id="clock-container">
+                            <span id="clock"><?php echo $now; ?></span>
+                        </div>
+                        <br>
                         <?php if (isset($_SESSION['user_id'])) { ?>
-                            <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House : <?php echo $_SESSION['user_username']; ?></h4>
+                            <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
+                            <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">User : <?php echo $_SESSION['user_username']; ?></h5>
                         <?php } else { ?>
                             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
                         <?php } ?>
+                        <script>
+                            function updateTime() {
+                                let now = new Date();
+                                let hours = now.getHours().toString().padStart(2, '0');
+                                let minutes = now.getMinutes().toString().padStart(2, '0');
+                                let seconds = now.getSeconds().toString().padStart(2, '0');
+                                document.getElementById("clock").innerText = hours + ":" + minutes + ":" + seconds;
+                            }
+
+                            setInterval(updateTime, 1000); // อัปเดตทุก 1 วินาที
+                        </script>
                         <br>
                         <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
                             <center>
-                                <font color="#8e4f23"><b> บันทึกการเลือกโต๊ะ *ให้พนักงานเลือกให้ เลือกและจองวันต่อวัน </b></font>
+                                <font color="#8e4f23"><b>ข้อมูลการจองโต๊ะ</b></font>
                             </center>
                         </div>
                         <hr>
@@ -84,12 +114,19 @@ $row = mysqli_fetch_array($result);
                                 <label class="col-sm-3" style="color: #5d4b31;">จำนวนคนในโต๊ะ</label>
                                 <div class="col-sm-9">
                                     <input type="number" name="booking_people" class="form-control" disabled placeholder="จำนวคน" min="1" max="8" value="<?php echo $row['booking_people']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                    <small class="form-text" style="color:rgb(211, 50, 10);">* แต่ละโต๊ะนั่งได้ไม่เกิน 8 คน</small>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3" style="color: #5d4b31;">เวลา</label>
+                                <label class="col-sm-3" style="color: #5d4b31;">เวลาจอง</label>
                                 <div class="col-sm-9">
                                     <input type="time" name="booking_time" class="form-control" disabled placeholder="เวลา" value="<?php echo $row['booking_time']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3" style="color: #5d4b31;">เวลารับโต๊ะ</label>
+                                <div class="col-sm-9">
+                                    <input type="time" name="booking_time" class="form-control" disabled placeholder="เวลา" value="<?php echo $row['booking_time_out']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -101,7 +138,7 @@ $row = mysqli_fetch_array($result);
                             <div class="form-group row">
                                 <label class="col-sm-3" style="color: #5d4b31;">ผู้บันทึก</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="booking_staff" class="form-control" readonly value="<?php echo $row['booking_staff'] . ' ' . $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
+                                    <input type="text" name="booking_staff" class="form-control" readonly value="<?php echo $row['booking_staff'] . ' : ' . $row['booking_name']; ?>" style="border-radius: 10px; background-color: #f9f8f3;">
                                 </div>
                             </div>
                             <?php if ($row['booking_status'] == 1) { ?>

@@ -1,3 +1,6 @@
+<?php
+  require_once 'connect_db.php';
+?>
 <html lang="en">
 
 <head>
@@ -11,7 +14,7 @@
     .devbanban {
       background-color: #ffffff;
     }
-  
+
     .center {
       display: block;
       margin-left: auto;
@@ -29,12 +32,15 @@
       background-color: #d76c51;
       text-align: center;
     }
+
     .btn a {
       color: white;
       text-decoration: none;
     }
+
     .btn:hover {
-      background-color: #c4543b; /* Darker shade on hover */
+      background-color: #c4543b;
+      /* Darker shade on hover */
     }
   </style>
 </head>
@@ -47,14 +53,19 @@
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 col-lg-7" style="margin-top: 50px;">
         <div class="card shadow-lg" style="border-radius: 15px; background-color: #f4f1e1;">
-          <div class="card-body">                    
+          <div class="card-body">
             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
-            <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold; font: size 25em;;">จองโต๊ะสำเร็จ</h5>           
+            <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold; font: size 25em;;">จองโต๊ะสำเร็จ</h5>
             <br>
             <img src="sucsym.webp" alt="Description of Image" class="center">
             <br><br>
             <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
-              <center><font color="#a82525"><b> กรุณามาก่อนเวลา 15 นาที เผื่อมีการเปลี่ยนแปลงใดๆ ขอบคุณครับ </b></font></center>
+              <center>
+                <font color="#a82525"><b> กรุณามาก่อนเวลา 15 นาที เผื่อมีการเปลี่ยนแปลงใดๆ</b></font>
+              </center>
+              <center>
+                <font color="#a82525"><b>คุณต้องมารับโต๊ะกับพนักงานภายในเวลา ...  ขอบคุณครับ</b></font>
+              </center>
             </div>
             <button class="btn btn-danger btn-lg">
               <a href="index.php">กลับสู่หน้าหลัก</a>

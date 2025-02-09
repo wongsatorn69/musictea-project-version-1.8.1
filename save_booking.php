@@ -13,7 +13,14 @@ $booking_name = $_POST['booking_name'];
 $booking_people = $_POST['booking_people'];
 $booking_date = $_POST['booking_date'];
 $booking_time = $_POST['booking_time'];
-$booking_time_out = $_POST['booking_time'];
+// แปลงเวลา booking_time เป็น DateTime object
+$time = new DateTime($booking_time);
+
+// เพิ่ม 15 นาที
+$time->add(new DateInterval('PT15M'));
+
+// ได้เวลาใหม่หลังจากเพิ่ม 15 นาที
+$booking_time_out = $time->format('H:i:s'); 
 $booking_phone = $_POST['booking_phone'];
 $booking_staff = $_POST['booking_staff'];
 $booking_status = 0 ;
@@ -23,7 +30,7 @@ $dateCreate = date('Y-m-d H:i:s'); //วันที่บันทึก
 
 //insert booking
 mysqli_query($condb, "BEGIN");
-$sqlInsertBooking	= "INSERT INTO  tbl_booking values(null, '$table_id', '$booking_name', '$booking_people' , '$booking_date','$booking_time_out', '$booking_time', '$booking_phone', '$booking_staff', '$dateCreate' , '$booking_status' , '$booking_bill')";
+$sqlInsertBooking	= "INSERT INTO  tbl_booking values(null, '$table_id', '$booking_name', '$booking_people' , '$booking_date','$booking_time', '$booking_time_out', '$booking_phone', '$booking_staff', '$dateCreate' , '$booking_status' , '$booking_bill')";
 $rsInsertBooking	= mysqli_query($condb, $sqlInsertBooking);
  
 //การใช้ Transection ประกอบด้วย  BEGIN COMMIT ROLLBACK 

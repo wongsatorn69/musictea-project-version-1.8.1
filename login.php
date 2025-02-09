@@ -26,7 +26,7 @@ require_once 'connect_db.php';
                         <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music & Tea House</h4>
                         <br>
                         <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
-                            <center><font color="#8e4f23"><b> Admin Login </b></font></center>
+                            <center><font color="#8e4f23"><b> Login (เฉพาะแอดมินและพนักงานเท่านั้น***) </b></font></center>
                         </div>
                         <hr>
                         <form action="checklogin.php" method="post">
