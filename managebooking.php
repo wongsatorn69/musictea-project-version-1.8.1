@@ -58,7 +58,6 @@
 
     <?php
     if (isset($_POST['finish_table']) && isset($_POST['booking_bill'])) {
-
         $booking_bill = $_POST['booking_bill'];
 
         $query = "SELECT * FROM tbl_booking WHERE booking_id=$_POST[finish_table]";
@@ -72,7 +71,7 @@
         $rsUpdate = mysqli_query($condb, $sqlUpdate);
 
         if ($result_fin = mysqli_query($condb, $sql_fin) && $rsUpdate = mysqli_query($condb, $sqlUpdate)) {
-            header("Location: finishtable.php");
+            header("Location: finishtable.php?id=".$row['booking_id']);
         } else {
             echo "<script type='text/javascript'>";
             echo "alert('ยืนยันไม่สำเร็จ');";

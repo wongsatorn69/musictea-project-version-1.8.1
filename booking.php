@@ -55,12 +55,6 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
               <span id="clock"><?php echo $now; ?></span>
             </div>
             <br>
-            <?php if (isset($_SESSION['user_id'])) { ?>
-              <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
-              <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">User : <?php echo $_SESSION['user_username']; ?></h5>
-            <?php } else { ?>
-              <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
-            <?php } ?>
             <script>
               function updateTime() {
                 let now = new Date();
@@ -72,6 +66,12 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
 
               setInterval(updateTime, 1000); // อัปเดตทุก 1 วินาที
             </script>
+            <?php if (isset($_SESSION['user_id'])) { ?>
+              <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
+              <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">User : <?php echo $_SESSION['user_username']; ?></h5>
+            <?php } else { ?>
+              <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
+            <?php } ?>
             <br>
             <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
               <center>

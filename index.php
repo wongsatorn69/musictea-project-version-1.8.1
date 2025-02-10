@@ -8,6 +8,8 @@ $result_table = mysqli_query($condb, $query_table);
 $query_total = "SELECT sum(booking_people) as total_people FROM tbl_booking WHERE (booking_status = 1 OR booking_status = 2) and booking_date = CURDATE()";
 $result_total = mysqli_query($condb, $query_total);
 $row_total = mysqli_fetch_assoc($result_total);
+
+$total_people = 0 ;
 ?>
 <?php
 $formatter = new IntlDateFormatter(
@@ -73,7 +75,6 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
           <?php } else { ?>
             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
           <?php } ?>
-
           <script>
             function updateTime() {
               let now = new Date();
@@ -123,7 +124,8 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
                         echo '<a href="booking.php?id=' . $row_table["id"] . '&act=booking"class="btn btn-success">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                       }
                     } elseif ($row_table['table_status'] == 1) { //ถูกจอง แต่ยังไม่รับโต๊ะ
-                      echo '<div class="col-2 col-md-2 col-sm-2" style=">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
+                      echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
+                      echo '<a href="#" class="btn btn-warning disabled">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
                     } else { //ถูกจอง รับโต๊ะแล้ว
                       echo '<div class="col-2 col-md-2 col-sm-2" style="margin: 5px;">';
                       echo '<a href="#" class="btn btn-secondary disabled">' . $row_table['table_type'] . '' . $row_table['table_name'] . '</a></div>';
@@ -135,7 +137,7 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
           <p><b style="color:rgb(176, 3, 3);">*** สีน้ำเงิน/สีเขียว = โต๊ะว่าง , สีเหลือง = โต๊ะติดจอง , สีเทา = โต๊ะไม่ว่าง ***</b></p>
 
           <?php if (isset($_SESSION['user_id'])) { ?>
-            <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันที่ " . $formatter->format(new DateTime()) . " : " . $row_total['total_people'] . " คน" . "</b></p>" ?>
+            <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันที่ " . $formatter->format(new DateTime()) . " : " .$total_people + $row_total['total_people'] . " คน" . "</b></p>" ?>
           <?php } ?>
 
           <?php if (isset($_SESSION['user_id'])) { ?>

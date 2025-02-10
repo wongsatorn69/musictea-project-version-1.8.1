@@ -1,5 +1,8 @@
-<html lang="en">
+<?php
+require_once 'connect_db.php';
+?>
 
+<html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -51,8 +54,14 @@
             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
             <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold; font: size 25em;;">โต๊ะว่าง</h5>           
             <br>
-            <img src="sucsym.webp" alt="Description of Image" class="center">
-            <br><br>
+            <img src="sucsym.png" alt="Description of Image" class="center">
+            <br>
+            <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
+              <center>
+                <font color="#a82525"><b>เช็คบิลเรียบร้อย!</b></font>
+              </center>
+            </div>
+            <br>
             <button class="btn btn-danger btn-lg">
               <a href="index.php">กลับสู่หน้าหลัก</a>
             </button>

@@ -43,7 +43,7 @@ $rsUpdate = mysqli_query($condb, $sqlUpdate);
 
 if($rsInsertBooking && $rsUpdate){ //ตรรวจสอบถ้า 2 ตัวแปรทำงานได้ถูกต้องจะทำการบันทึก แต่ถ้าเกิดข้อผิดพลาดจะ Rollback คือไม่บันทึกข้อมูลใดๆ
 		mysqli_query($condb, "COMMIT");
-		header("Location: success.php");
+		header("Location: success.php?id=".$table_id);
 	}else{
 		mysqli_query($condb, "ROLLBACK");  
 		$msg = 'บันทึกข้อมูลไม่สำเร็จ กรุณาติดต่อเจ้าหน้าที่ค่ะ  <a href="index.php"> กลับหน้าหลัก </a>';	

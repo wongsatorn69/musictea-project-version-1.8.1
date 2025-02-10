@@ -1,5 +1,15 @@
 <?php
-  require_once 'connect_db.php';
+require_once 'connect_db.php';
+?>
+
+<?php
+$query = "SELECT * FROM tbl_booking WHERE table_id=$_GET[id] and booking_status = 0";
+$result = mysqli_query($condb, $query);
+$row = mysqli_fetch_array($result);
+
+$time_out = $row['booking_time_out'];
+$time = new DateTime($time_out);
+$booking_time_out = $time->format('H:i:s'); 
 ?>
 <html lang="en">
 
@@ -57,14 +67,14 @@
             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
             <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold; font: size 25em;;">จองโต๊ะสำเร็จ</h5>
             <br>
-            <img src="sucsym.webp" alt="Description of Image" class="center">
+            <img src="sucsym.png" alt="Description of Image" class="center">
             <br><br>
             <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
               <center>
                 <font color="#a82525"><b> กรุณามาก่อนเวลา 15 นาที เผื่อมีการเปลี่ยนแปลงใดๆ</b></font>
               </center>
               <center>
-                <font color="#a82525"><b>คุณต้องมารับโต๊ะกับพนักงานภายในเวลา ...  ขอบคุณครับ</b></font>
+                <font color="#a82525"><b>คุณต้องมารับโต๊ะกับพนักงานภายในเวลา <?php echo $booking_time_out?> น. ขอบคุณครับ</b></font>
               </center>
             </div>
             <button class="btn btn-danger btn-lg">

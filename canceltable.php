@@ -51,7 +51,7 @@
             <h4 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold;">SMC Music&Tea House</h4>
             <h5 align="center" style="color: #4b8c4e; font-family: 'Arial', sans-serif; font-weight: bold; font: size 25em;;">ยกเลิกสำเร็จ</h5>           
             <br>
-            <img src="sucsym.webp" alt="Description of Image" class="center">
+            <img src="sucsym.png" alt="Description of Image" class="center">
             <br><br>
             <button class="btn btn-danger btn-lg">
               <a href="index.php">กลับสู่หน้าหลัก</a>
