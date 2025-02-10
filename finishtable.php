@@ -1,5 +1,8 @@
 <?php
 require_once 'connect_db.php';
+$query = "SELECT * FROM tbl_booking WHERE booking_id=$_GET[id]";
+$result = mysqli_query($condb, $query);
+$row = mysqli_fetch_array($result);
 ?>
 
 <html lang="en">
@@ -58,7 +61,7 @@ require_once 'connect_db.php';
             <br>
             <div class="alert alert-warning" role="alert" style="background-color: #c9e6b9; border-color: #a1c49d;">
               <center>
-                <font color="#a82525"><b>เช็คบิลเรียบร้อย!</b></font>
+                <font color="#a82525"><b>เช็คบิลเรียบร้อย! <?php echo $row['booking_bill']?> บาท</b></font>
               </center>
             </div>
             <br>

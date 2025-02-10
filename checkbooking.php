@@ -3,7 +3,7 @@
 require_once 'connect_db.php';
 //query
 $query = "SELECT * FROM tbl_table
-          INNER JOIN tbl_booking ON tbl_table.id = tbl_booking.table_id WHERE tbl_table.id=$_GET[id] and booking_status = 0 or booking_status = 1 ";
+          INNER JOIN tbl_booking ON tbl_table.id = tbl_booking.table_id WHERE tbl_table.id=$_GET[id] and ( booking_status = 0 or booking_status = 1 ) ";
 $result = mysqli_query($condb, $query);
 $row = mysqli_fetch_array($result);
 
