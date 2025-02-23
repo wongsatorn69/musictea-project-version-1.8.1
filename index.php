@@ -9,7 +9,7 @@ $query_total = "SELECT sum(booking_people) as total_people FROM tbl_booking WHER
 $result_total = mysqli_query($condb, $query_total);
 $row_total = mysqli_fetch_assoc($result_total);
 
-$total_people = 0 ;
+$total_people = 0;
 ?>
 <?php
 $formatter = new IntlDateFormatter(
@@ -94,6 +94,13 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
                 <center><b style="color: #8e4f23;">A(สีน้ำเงิน) = โซนนั่งพื้น, B(สีเขียว) = โซนนั่งโต๊ะ</b></center>
               </div>
               <hr>
+              <div class="row justify-content-center text-center">
+                <div class="col-sm-4 col-md-4">
+                  <div class="alert alert-warning" role="alert" style="background-color:rgb(213, 189, 122); border-color: #a1c49d;">
+                    <center><b style="color:rgb(83, 80, 78);">เวที SMC Music&Tea House</b></center>
+                  </div>
+                </div>
+              </div>
               <div class="row justify-content-center text-center" style="margin-bottom: 20px;">
                 <?php if (isset($_SESSION['user_id'])) { ?>
                   <?php foreach ($result_table as  $row_table) {
@@ -138,7 +145,7 @@ $now = date('H:i:s'); // เวลาเริ่มต้นจาก PHP
           <p><b style="color:rgb(176, 3, 3);">*** สีน้ำเงิน/สีเขียว = โต๊ะว่าง , สีเหลือง = โต๊ะติดจอง , สีเทา = โต๊ะไม่ว่าง ***</b></p>
 
           <?php if (isset($_SESSION['user_id'])) { ?>
-            <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันที่ " . $formatter->format(new DateTime()) . " : " .$total_people + $row_total['total_people'] . " คน" . "</b></p>" ?>
+            <?php echo "<p><b style='color: #4b8c4e;'>จำนวนคนวันที่ " . $formatter->format(new DateTime()) . " : " . $total_people + $row_total['total_people'] . " คน" . "</b></p>" ?>
           <?php } ?>
 
           <?php if (isset($_SESSION['user_id'])) { ?>
