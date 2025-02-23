@@ -2,7 +2,7 @@
     require_once 'connect_db.php';
     session_start();
     ?>
-
+  
     <?php
     if (isset($_GET['cancel_table'])) {
 

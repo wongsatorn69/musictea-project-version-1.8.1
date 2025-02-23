@@ -4,6 +4,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/png" href="up.png">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <title>CONFIRM</title>
@@ -43,6 +44,14 @@
   <?php
   session_start();
   ?>
+  <?php
+    if (isset($_SESSION['user_id'])) {
+    } else {
+        echo "<script type='text/javascript'>";
+        echo "window.location = 'index.php'; ";
+        echo "</script>";
+    }
+    ?>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 col-lg-7" style="margin-top: 50px;">
