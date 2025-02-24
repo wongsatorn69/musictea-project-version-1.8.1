@@ -12,16 +12,6 @@
     session_start();
     include 'connect_db.php';
 
-   
-    
-    if (isset($_SESSION['user_id'])) {
-    } else {
-        echo "<script type='text/javascript'>";
-        echo "window.location = 'index.php'; ";
-        echo "</script>";
-    }
-    
-
 
     if (isset($_POST['submit'])) {
         $user_username = $_POST['user_username'];
